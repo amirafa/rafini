@@ -8,6 +8,7 @@ body {
     height: 100vh;
     padding: 32px;
     background-color: #020617;
+    overflow-y: hidden;
 }
 
 @media only screen and (max-width: 600px) {
@@ -17,6 +18,7 @@ body {
 
     #container {
         padding: 8px !important;
+        margin-bottom: 90px !important;
     }
 
     #question-blob {
@@ -33,6 +35,8 @@ body {
     padding: 32px;
     border-radius: 16px;
     height: 100vh;
+    margin-bottom: 120px;
+    overflow-y: auto;
 }
 
 #title {
@@ -108,5 +112,4 @@ body {
     background-color: #94a3b879;
     display: flex;
     flex-grow: 1;
-    overflow-y: auto;
 }
