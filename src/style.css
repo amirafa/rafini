@@ -94,6 +94,7 @@ body {
     color: #f8fafc;
     margin-right: 64px;
     padding-inline: 32px;
+    padding-block: 0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 16px;
     border-top-right-radius: 16px;
