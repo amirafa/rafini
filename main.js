@@ -11,7 +11,6 @@ let response = "Ask Your Question ... ";
 document.getElementById(
     "response"
 ).innerHTML = `<p id="empty-text">${response}</p>`;
-let loading = false;
 
 document.getElementById("prompt").addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -36,21 +35,16 @@ async function GenerateResponse() {
 
     console.clear();
     console.log("Generated");
-    loading = false;
-
-    document.getElementById("question").innerHTML = `<p>${question} ${
-        loading ? " ⏳️" : ""
-    }</p>`;
+    document.getElementById("question").innerHTML = `<p>${question}</p>`;
 }
 
 function handleSubmit() {
     const userPrompt = document.getElementById("prompt").value.trim();
     if (userPrompt) {
         question = document.getElementById("prompt").value;
-        loading = true;
-        document.getElementById("question").innerHTML = `<p>${question} ${
-            loading ? " ⏳️" : ""
-        }</p>`;
+        document.getElementById(
+            "question"
+        ).innerHTML = `<p>${question}  ⏳️</p>`;
 
         GenerateResponse();
     }
