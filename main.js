@@ -23,35 +23,30 @@ document.getElementById("prompt").addEventListener("keydown", (event) => {
 document.getElementById("generate").addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
-    try {
-        const result = await model.generateContentStream(question);
+    const result = await model.generateContentStream(question);
 
-        response = "";
-        document.getElementById("prompt").value = "";
+    response = "";
+    document.getElementById("prompt").value = "";
 
-        console.log('Generating...');
-        for await (const chunk of result.stream) {
-            response = response + chunk.text();
-            document.getElementById("response").innerHTML = marked(response);
-        }
-
-        console.clear()
-        console.log('Generated');
-        loading = false;
-        document.getElementById("question").innerHTML = `<p>${question} ${
-            loading ? " ⏳️" : ""
-        }</p>`;
-    } catch (err) {
-        loading = false;
-        document.getElementById("question").innerHTML = `<p>${question} ${
-            loading ? " ⏳️" : ""
-        }</p>`;
+    console.log("Generating...");
+    for await (const chunk of result.stream) {
+        response = response + chunk.text();
+        document.getElementById("response").innerHTML = marked(response);
     }
+
+    console.clear();
+    console.log("Generated");
+    loading = false;
+
+    document.getElementById("question").innerHTML = `<p>${question} ${
+        loading ? " ⏳️" : ""
+    }</p>`;
 }
 
 function handleSubmit() {
     const userPrompt = document.getElementById("prompt").value.trim();
     if (userPrompt) {
+        question = document.getElementById("prompt").value;
         loading = true;
         document.getElementById("question").innerHTML = `<p>${question} ${
             loading ? " ⏳️" : ""
