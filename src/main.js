@@ -22,7 +22,7 @@ document.getElementById("prompt-textarea").addEventListener("keydown", (event) =
     }
 });
 
-document.getElementById("generate-button").addEventListener("click", handleSubmit);
+document.getElementById("prompt-button").addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
     try {

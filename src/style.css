@@ -50,10 +50,6 @@ body {
     -webkit-box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
     box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background: #f9f9f9;
     padding: 10px;
     display: flex;
@@ -62,7 +58,7 @@ body {
     background-color: #262626;
 }
 
-#generate-button {
+#prompt-button {
     padding: 16px;
     margin-right: 16px;
     border-radius: 32px;
