@@ -10,106 +10,16 @@
             href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
-        <style>
-            body {
-                font-family: "Montserrat", serif;
-                font-optical-sizing: auto;
-                font-weight: 500;
-                font-style: normal;
-                display: flex;
-                flex-direction: column;
-                height: 100vh;
-                padding: 32px;
-                background-color: #020617;
-            }
-
-            #container {
-                background-color: #1f2937;
-                padding: 32px;
-                border-radius: 16px;
-                height: 100vh;
-            }
-
-            #title {
-                margin-block: 32px;
-                font-size: 32px;
-                font-weight: 700;
-                color: #fff;
-                display: flex;
-                justify-content: center;
-            }
-
-            #prompt-section {
-                -webkit-box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
-                -moz-box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
-                box-shadow: 0px -9px 22px -15px rgba(0, 0, 0, 0.75);
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: #f9f9f9;
-                padding: 10px;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                background-color: #262626;
-            }
-
-            #prompt {
-                flex: 1;
-                resize: none;
-            }
-
-            #generate {
-                padding: 16px;
-                margin-right: 16px;
-                border-radius: 32px;
-                border: none;
-                background-color: #0891b2;
-            }
-
-            textarea {
-                padding: 16px;
-                border-radius: 32px;
-                border: none;
-            }
-
-            #question {
-                color: #141d2b;
-                margin-right: 64px;
-                padding-inline: 32px;
-                border-top-left-radius: 0px;
-                border-bottom-left-radius: 16px;
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
-                border: none;
-                margin-bottom: 8px;
-                background-color: #94a3b879;
-                display: flex;
-                flex-grow: 1;
-            }
-
-            #response-section {
-                margin-left: 64px;
-                padding-inline: 32px;
-                padding-block: 0px;
-                color: #141d2b;
-                border-top-left-radius: 16px;
-                border-bottom-left-radius: 16px;
-                border-top-right-radius: 0px;
-                border-bottom-right-radius: 16px;
-                background-color: #94a3b879;
-                display: flex;
-                flex-grow: 1;
-                overflow-y: auto;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="/src/style.css" />
     </head>
     <body>
         <div id="container">
             <!-- title -->
             <div id="title">
-                Rafini Flash 2.0 (Gemini Flash 2.0 Experimental) ✨️
+                <span>Rafini Flash 2.0</span>
+                <span style="font-weight: 400">
+                    (Gemini Flash 2.0 Experimental) ✨️
+                </span>
             </div>
 
             <!-- Response Section -->
@@ -124,12 +34,12 @@
                     "
                 />
 
-                <span id="question" dir="auto"></span>
+                <span id="question-blob" dir="auto"></span>
             </div>
 
             <div style="display: flex">
-                <div id="response-section">
-                    <span id="response" dir="auto" style="width: 100%;"></span>
+                <div id="response-blob">
+                    <span id="response" dir="auto" style="width: 100%"></span>
                 </div>
                 <img
                     src="https://api.iconify.design/akar-icons:google-contained-fill.svg"
@@ -145,13 +55,13 @@
             <!-- Prompt Section -->
             <div id="prompt-section">
                 <textarea
-                    id="prompt"
+                    id="prompt-textarea"
                     rows="1"
                     placeholder="Enter your Question"
                 ></textarea>
-                <button id="generate">✨️</button>
+                <button id="generate-button">✨️</button>
             </div>
         </div>
-        <script type="module" src="/main.js"></script>
+        <script type="module" src="/src/main.js"></script>
     </body>
 </html>

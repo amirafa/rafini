@@ -12,24 +12,24 @@ document.getElementById(
     "response"
 ).innerHTML = `<p id="empty-text">${response}</p>`;
 document.getElementById(
-    "question"
+    "question-blob"
 ).innerHTML = `<p id="empty-text">...</p>`;
 
-document.getElementById("prompt").addEventListener("keydown", (event) => {
+document.getElementById("prompt-textarea").addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
         handleSubmit();
     }
 });
 
-document.getElementById("generate").addEventListener("click", handleSubmit);
+document.getElementById("generate-button").addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
     try {
         const result = await model.generateContentStream(question);
 
         response = "";
-        document.getElementById("prompt").value = "";
+        document.getElementById("prompt-textarea").value = "";
 
         console.log("Generating...");
         for await (const chunk of result.stream) {
@@ -42,15 +42,15 @@ async function GenerateResponse() {
         console.log("error", error);
     }
     
-    document.getElementById("question").innerHTML = `<p>${question}</p>`;
+    document.getElementById("question-blob").innerHTML = `<p>${question}</p>`;
 }
 
 function handleSubmit() {
-    const userPrompt = document.getElementById("prompt").value.trim();
+    const userPrompt = document.getElementById("prompt-textarea").value.trim();
     if (userPrompt) {
-        question = document.getElementById("prompt").value;
+        question = document.getElementById("prompt-textarea").value;
         document.getElementById(
-            "question"
+            "question-blob"
         ).innerHTML = `<p>${question}  ⏳️</p>`;
 
         GenerateResponse();
