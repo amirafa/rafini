@@ -39,7 +39,7 @@ body {
     margin-block: 32px;
     font-size: 32px;
     font-weight: 700;
-    color: #fff;
+    color: #aab0bb;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -81,7 +81,7 @@ body {
 }
 
 #question-blob {
-    color: #141d2b;
+    color: #f8fafc;
     margin-right: 64px;
     padding-inline: 32px;
     border-top-left-radius: 0px;
@@ -99,7 +99,7 @@ body {
     margin-left: 64px;
     padding-inline: 32px;
     padding-block: 0px;
-    color: #141d2b;
+    color: #f8fafc;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
     border-top-right-radius: 0px;
