@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rafini Flash 2.0</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                background-color: #0f172a;
+                font-family: "Montserrat", serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
+            #prompt-section {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: #f9f9f9;
+                padding: 10px;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background-color: #262626;
+            }
+            #prompt {
+                flex: 1;
+                resize: none;
+            }
+            #generate {
+                padding: 16px;
+                margin-right: 16px;
+            }
+            textarea {
+                padding: 16px;
+                border-radius: 3216px;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            style="
+                margin-block: 32px;
+                font-size: 32px;
+                font-weight: 400;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+            "
+        >
+            Rafini Flash 2.0 (Gemini Flash 2.0 Experimental)
+        </div>
+        <div id="prompt-section">
+            <textarea
+                id="prompt"
+                rows="1"
+                cols="50"
+                placeholder="Enter your Question"
+            ></textarea>
+            <button id="generate" style="border-radius: 32px;border: none;background-color: #0891b2;">✨️</button>
+        </div>
+
+        <span id="question" style="color: white;padding-left: 32px;" dir="auto"></span>
+        <div
+            style="
+                margin-inline: 32px;
+                padding-inline: 32px;
+                padding-block: 0px;
+                color: #141c29;
+                border-radius: 16px;
+                background-color: #94a3b879;
+                overflow-y: auto;
+            "
+        >
+            <span id="response" dir="auto"></span>
+        </div>
+
+        <script type="module" src="/main.js"></script>
+    </body>
+</html>
