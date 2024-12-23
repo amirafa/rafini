@@ -11,6 +11,9 @@ let response = "Ask Your Question ... ";
 document.getElementById(
     "response"
 ).innerHTML = `<p id="empty-text">${response}</p>`;
+document.getElementById(
+    "question"
+).innerHTML = `<p id="empty-text">...</p>`;
 
 document.getElementById("prompt").addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -22,19 +25,23 @@ document.getElementById("prompt").addEventListener("keydown", (event) => {
 document.getElementById("generate").addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
-    const result = await model.generateContentStream(question);
+    try {
+        const result = await model.generateContentStream(question);
 
-    response = "";
-    document.getElementById("prompt").value = "";
+        response = "";
+        document.getElementById("prompt").value = "";
 
-    console.log("Generating...");
-    for await (const chunk of result.stream) {
-        response = response + chunk.text();
-        document.getElementById("response").innerHTML = marked(response);
+        console.log("Generating...");
+        for await (const chunk of result.stream) {
+            response = response + chunk.text();
+            document.getElementById("response").innerHTML = marked(response);
+        }
+        console.clear();
+        console.log("Generated");
+    } catch (error) {
+        console.log("error", error);
     }
-
-    console.clear();
-    console.log("Generated");
+    
     document.getElementById("question").innerHTML = `<p>${question}</p>`;
 }
 
