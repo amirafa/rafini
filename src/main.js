@@ -60,3 +60,9 @@ function handleSubmit() {
         GenerateResponse();
     }
 }
+
+function autoResize() {
+    const textarea = document.getElementById('prompt-textarea');
+    textarea.style.height = 'auto'; // Reset the height to auto to get the natural height
+    textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to scroll height
+}

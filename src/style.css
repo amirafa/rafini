@@ -83,7 +83,8 @@ body {
 }
 
 #prompt-textarea {
-    padding: 16px;
+    padding-block: 16px;
+    padding-inline: 32px;
     border-radius: 32px;
     border: none;
     flex: 1;
@@ -119,4 +120,13 @@ body {
     background-color: #94a3b879;
     display: flex;
     flex-grow: 1;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
