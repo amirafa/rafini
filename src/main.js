@@ -15,14 +15,18 @@ document.getElementById(
     "question-blob"
 ).innerHTML = `<p id="empty-text">...</p>`;
 
-document.getElementById("prompt-textarea").addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-        handleSubmit();
-    }
-});
+document
+    .getElementById("prompt-textarea")
+    .addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && !event.shiftKey && window.innerWidth > 768) {
+            event.preventDefault();
+            handleSubmit();
+        }
+    });
 
-document.getElementById("prompt-button").addEventListener("click", handleSubmit);
+document
+    .getElementById("prompt-button")
+    .addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
     try {
@@ -41,7 +45,7 @@ async function GenerateResponse() {
     } catch (error) {
         console.log("error", error);
     }
-    
+
     document.getElementById("question-blob").innerHTML = `<p>${question}</p>`;
 }
 
