@@ -5,7 +5,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
-const textarea = document.getElementById('prompt-textarea');
+const textarea = document.getElementById("prompt-textarea");
 
 let question = "";
 let response = "Ask Your Question ... ";
@@ -19,7 +19,11 @@ document.getElementById(
 document
     .getElementById("prompt-textarea")
     .addEventListener("keydown", (event) => {
-        if (event.key === "Enter" && !event.shiftKey && window.innerWidth > 768) {
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey &&
+            window.innerWidth > 768
+        ) {
             event.preventDefault();
             handleSubmit();
         }
@@ -34,13 +38,15 @@ async function GenerateResponse() {
         const result = await model.generateContentStream(question);
 
         response = "";
-        document.getElementById("prompt-textarea").value = "";
-
         console.log("Generating...");
         for await (const chunk of result.stream) {
             response = response + chunk.text();
             document.getElementById("response").innerHTML = marked(response);
         }
+        
+        textarea.style.height = `19px`;
+        document.getElementById("prompt-textarea").value = "";
+
         console.clear();
         console.log("Generated");
     } catch (error) {
@@ -62,15 +68,15 @@ function handleSubmit() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     function adjustTextareaHeight() {
-        textarea.style.height = 'auto';
+        textarea.style.height = "auto";
 
-        const newHeight = Math.max(0, textarea.scrollHeight-32);
+        const newHeight = Math.max(0, textarea.scrollHeight - 32);
         textarea.style.height = `${newHeight}px`;
     }
 
-    textarea.addEventListener('input', adjustTextareaHeight);
+    textarea.addEventListener("input", adjustTextareaHeight);
 
     adjustTextareaHeight();
 });
