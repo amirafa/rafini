@@ -48,7 +48,8 @@ body {
 }
 
 #title {
-    margin-block: 32px;
+    margin-top: 16px;
+    margin-bottom: 32px;
     font-size: 32px;
     font-weight: 700;
     color: #aab0bb;
