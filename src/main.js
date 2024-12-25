@@ -43,7 +43,7 @@ async function GenerateResponse() {
             response = response + chunk.text();
             document.getElementById("response").innerHTML = marked(response);
         }
-        
+
         textarea.style.height = `19px`;
         document.getElementById("prompt-textarea").value = "";
 
@@ -71,8 +71,7 @@ function handleSubmit() {
 document.addEventListener("DOMContentLoaded", function () {
     function adjustTextareaHeight() {
         textarea.style.height = "auto";
-
-        const newHeight = Math.max(0, textarea.scrollHeight - 32);
+        const newHeight = Math.min(500, Math.max(19, textarea.scrollHeight - 32));;
         textarea.style.height = `${newHeight}px`;
     }
 
