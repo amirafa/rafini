@@ -7,6 +7,8 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 const textarea = document.getElementById("prompt-textarea");
 
+const chat = model.startChat();
+
 let question = "";
 let response = "Ask Your Question ... ";
 document.getElementById(
@@ -35,17 +37,20 @@ document
 
 async function GenerateResponse() {
     try {
-        const result = await model.generateContentStream(question);
-
+        let result = await chat.sendMessage/*Stream*/(question);
+        
         response = "";
         console.log("Generating...");
-        for await (const chunk of result.stream) {
-            response = response + chunk.text();
-            document.getElementById("response").innerHTML = marked(response);
-        }
+
+        response = response + result.response.text();
+        document.getElementById("response").innerHTML = marked(response);
+        // for await (const chunk of result.stream) {
+        //     response = response + chunk.text();
+        //     document.getElementById("response").innerHTML = marked(response);
+        // }
 
         textarea.style.height = `19px`;
-        document.getElementById("prompt-textarea").value = "";
+        textarea.value = "";
 
         console.clear();
         console.log("Generated");
@@ -71,7 +76,10 @@ function handleSubmit() {
 document.addEventListener("DOMContentLoaded", function () {
     function adjustTextareaHeight() {
         textarea.style.height = "auto";
-        const newHeight = Math.min(500, Math.max(19, textarea.scrollHeight - 32));;
+        const newHeight = Math.min(
+            500,
+            Math.max(19, textarea.scrollHeight - 32)
+        );
         textarea.style.height = `${newHeight}px`;
     }
 
