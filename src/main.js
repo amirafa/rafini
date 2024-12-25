@@ -5,6 +5,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+const textarea = document.getElementById('prompt-textarea');
 
 let question = "";
 let response = "Ask Your Question ... ";
@@ -61,8 +62,15 @@ function handleSubmit() {
     }
 }
 
-function autoResize() {
-    const textarea = document.getElementById('prompt-textarea');
-    textarea.style.height = 'auto'; // Reset the height to auto to get the natural height
-    textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to scroll height
-}
+document.addEventListener('DOMContentLoaded', function() {
+    function adjustTextareaHeight() {
+        textarea.style.height = 'auto';
+
+        const newHeight = Math.max(0, textarea.scrollHeight-32);
+        textarea.style.height = `${newHeight}px`;
+    }
+
+    textarea.addEventListener('input', adjustTextareaHeight);
+
+    adjustTextareaHeight();
+});
