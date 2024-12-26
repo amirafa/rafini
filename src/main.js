@@ -10,7 +10,11 @@ const textarea = document.getElementById("prompt-textarea");
 const history = [
     {
         role: "user",
-        parts: [{ text: "if I ask you about your name, call yourself 'Rafini, an AI chatbot powered by Google Gemini Flash 2.0'" }],
+        parts: [
+            {
+                text: "if I ask you about your name, call yourself 'Rafini, an AI chatbot powered by Google Gemini Flash 2.0'",
+            },
+        ],
     },
     {
         role: "user",
@@ -53,6 +57,23 @@ document
     .getElementById("prompt-button")
     .addEventListener("click", handleSubmit);
 
+function handleSubmit() {
+    const userPrompt = document.getElementById("prompt-textarea").value.trim();
+    if (userPrompt) {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+
+        question = document.getElementById("prompt-textarea").value;
+        document.getElementById(
+            "question-blob"
+        ).innerHTML = `<p>${question}  ⏳️</p>`;
+
+        GenerateResponse();
+    }
+}
+
 async function GenerateResponse() {
     try {
         let result = await chat.sendMessage(/*Stream*/ question);
@@ -77,18 +98,6 @@ async function GenerateResponse() {
     }
 
     document.getElementById("question-blob").innerHTML = `<p>${question}</p>`;
-}
-
-function handleSubmit() {
-    const userPrompt = document.getElementById("prompt-textarea").value.trim();
-    if (userPrompt) {
-        question = document.getElementById("prompt-textarea").value;
-        document.getElementById(
-            "question-blob"
-        ).innerHTML = `<p>${question}  ⏳️</p>`;
-
-        GenerateResponse();
-    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
