@@ -46,7 +46,7 @@ document
 
 document.getElementById("new-button").addEventListener("click", () => {
     if (confirm("Do you want to start a new chat?") == true) {
-        let response = "Hey, What can i do for you?";
+        response = "Hey, What can i do for you?";
         document.getElementById("question-blob").innerHTML = `<p>...</p>`;
         document.getElementById("response").innerHTML = `<p>${response}</p>`;
         chat = model.startChat({ history: history });
@@ -61,7 +61,9 @@ function handleSubmit() {
     const userPrompt = document.getElementById("prompt-textarea").value.trim();
     if (userPrompt) {
         question = document.getElementById("prompt-textarea").value;
-        document.getElementById("question-blob").innerHTML = `<p>${question}</p>`;
+        document.getElementById(
+            "question-blob"
+        ).innerHTML = `<p>${question}</p>`;
 
         GenerateResponse();
     }
@@ -72,10 +74,10 @@ async function GenerateResponse() {
         document.getElementById("response").innerHTML = `<p>⏳️</p>`;
 
         let result = await chat.sendMessage(/*Stream*/ question);
-        
+
         console.log("Generating...");
 
-        response = response + result.response.text();
+        response = result.response.text();
         document.getElementById("response").innerHTML = marked(response);
         // for await (const chunk of result.stream) {
         //     response = response + chunk.text();
