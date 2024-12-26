@@ -110,7 +110,8 @@ body {
 
 #prompt-textarea {
     padding-block: 16px;
-    padding-inline: 32px;
+    padding-left: 32px;
+    padding-right: 58px;
     border-radius: 32px;
     background-color: #474e58;
     color: #e6e6e6;
