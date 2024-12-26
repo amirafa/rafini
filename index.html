@@ -22,7 +22,7 @@
             <!-- title -->
             <div id="title">
                 <span>Rafini ✨️</span>
-                <span style="font-weight: 400;font-size: 16px;">
+                <span style="font-weight: 400; font-size: 16px">
                     Gemini Flash 2.0
                 </span>
             </div>
@@ -59,7 +59,7 @@
 
             <!-- Prompt Section -->
             <div>
-                <div id="prompt-section">
+                <div id="prompt-section" class="relative">
                     <textarea
                         id="prompt-textarea"
                         rows="1"
@@ -67,6 +67,17 @@
                         placeholder="Enter your Question"
                         class="hide-scrollbar"
                     ></textarea>
+                    <button id="new-button">
+                        <img
+                            src="https://api.iconify.design/material-symbols:chat-add-on.svg"
+                            style="
+                                width: 24px;
+                                height: 24px;
+                                filter: invert(1);
+                                margin-top: 4px;
+                            "
+                        />
+                    </button>
                     <button id="prompt-button">
                         <img
                             src="https://api.iconify.design/healthicons:artificial-intelligence.svg"

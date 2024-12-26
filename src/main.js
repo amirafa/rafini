@@ -7,16 +7,16 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 const textarea = document.getElementById("prompt-textarea");
 
-const chat = model.startChat();
+let chat = model.startChat();
 
 let question = "";
 let response = "Ask Your Question ... ";
 document.getElementById(
-    "response"
-).innerHTML = `<p id="empty-text">${response}</p>`;
-document.getElementById(
     "question-blob"
-).innerHTML = `<p id="empty-text">...</p>`;
+).innerHTML = `<p>...</p>`;
+document.getElementById(
+    "response"
+).innerHTML = `<p>${response}</p>`;
 
 document
     .getElementById("prompt-textarea")
@@ -31,14 +31,27 @@ document
         }
     });
 
+document.getElementById("new-button").addEventListener("click", () => {
+    if (confirm("Do you want to start a new chat?") == true) {
+        let response = "Ask Your Question ... ";
+        document.getElementById(
+            "question-blob"
+        ).innerHTML = `<p>...</p>`;
+        document.getElementById(
+            "response"
+        ).innerHTML = `<p>${response}</p>`;
+        chat = model.startChat();
+    }
+});
+
 document
     .getElementById("prompt-button")
     .addEventListener("click", handleSubmit);
 
 async function GenerateResponse() {
     try {
-        let result = await chat.sendMessage/*Stream*/(question);
-        
+        let result = await chat.sendMessage(/*Stream*/ question);
+
         response = "";
         console.log("Generating...");
 
