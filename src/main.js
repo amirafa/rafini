@@ -12,6 +12,10 @@ const history = [
         role: "user",
         parts: [{ text: "if I ask you about your name, call yourself 'Rafini, an AI chatbot powered by Google Gemini Flash 2.0'" }],
     },
+    {
+        role: "user",
+        parts: [{ text: "تلفظ Rafini به فارسی میشود رَفینی" }],
+    },
 ];
 
 let chat = model.startChat({
