@@ -61,9 +61,7 @@ function handleSubmit() {
     const userPrompt = document.getElementById("prompt-textarea").value.trim();
     if (userPrompt) {
         question = document.getElementById("prompt-textarea").value;
-        document.getElementById(
-            "question-blob"
-        ).innerHTML = `<p>${question}  ⏳️</p>`;
+        document.getElementById("question-blob").innerHTML = `<p>${question}</p>`;
 
         GenerateResponse();
     }
@@ -71,9 +69,10 @@ function handleSubmit() {
 
 async function GenerateResponse() {
     try {
-        let result = await chat.sendMessage(/*Stream*/ question);
+        document.getElementById("response").innerHTML = `<p>⏳️</p>`;
 
-        response = "";
+        let result = await chat.sendMessage(/*Stream*/ question);
+        
         console.log("Generating...");
 
         response = response + result.response.text();
