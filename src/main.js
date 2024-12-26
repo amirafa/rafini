@@ -10,7 +10,7 @@ const textarea = document.getElementById("prompt-textarea");
 let chat = model.startChat();
 
 let question = "";
-let response = "Hi there, What can i do for you? ";
+let response = "Hey, What can i do for you?";
 document.getElementById(
     "question-blob"
 ).innerHTML = `<p>...</p>`;
@@ -33,7 +33,7 @@ document
 
 document.getElementById("new-button").addEventListener("click", () => {
     if (confirm("Do you want to start a new chat?") == true) {
-        let response = "Hi there, What can i do for you? ";
+        let response = "Hey, What can i do for you?";
         document.getElementById(
             "question-blob"
         ).innerHTML = `<p>...</p>`;
