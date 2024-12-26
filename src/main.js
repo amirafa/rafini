@@ -45,11 +45,8 @@ document
     });
 
 document.getElementById("new-button").addEventListener("click", () => {
-    if (confirm("Do you want to start a new chat?") == true) {
-        response = "Hey, What can i do for you?";
-        document.getElementById("question-blob").innerHTML = `<p>...</p>`;
-        document.getElementById("response").innerHTML = `<p>${response}</p>`;
-        chat = model.startChat({ history: history });
+    if (confirm("Do you want to start a new chat?")) {
+        window.location.reload();
     }
 });
 
