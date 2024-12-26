@@ -60,11 +60,6 @@ document
 function handleSubmit() {
     const userPrompt = document.getElementById("prompt-textarea").value.trim();
     if (userPrompt) {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-
         question = document.getElementById("prompt-textarea").value;
         document.getElementById(
             "question-blob"
