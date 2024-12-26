@@ -7,16 +7,21 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 const textarea = document.getElementById("prompt-textarea");
 
-let chat = model.startChat();
+const history = [
+    {
+        role: "user",
+        parts: [{ text: "if I ask you about your name, call yourself 'Rafini, an AI chatbot powered by Google Gemini Flash 2.0'" }],
+    },
+];
+
+let chat = model.startChat({
+    history: history,
+});
 
 let question = "";
 let response = "Hey, What can i do for you?";
-document.getElementById(
-    "question-blob"
-).innerHTML = `<p>...</p>`;
-document.getElementById(
-    "response"
-).innerHTML = `<p>${response}</p>`;
+document.getElementById("question-blob").innerHTML = `<p>...</p>`;
+document.getElementById("response").innerHTML = `<p>${response}</p>`;
 
 document
     .getElementById("prompt-textarea")
@@ -34,13 +39,9 @@ document
 document.getElementById("new-button").addEventListener("click", () => {
     if (confirm("Do you want to start a new chat?") == true) {
         let response = "Hey, What can i do for you?";
-        document.getElementById(
-            "question-blob"
-        ).innerHTML = `<p>...</p>`;
-        document.getElementById(
-            "response"
-        ).innerHTML = `<p>${response}</p>`;
-        chat = model.startChat();
+        document.getElementById("question-blob").innerHTML = `<p>...</p>`;
+        document.getElementById("response").innerHTML = `<p>${response}</p>`;
+        chat = model.startChat({ history: history });
     }
 });
 
